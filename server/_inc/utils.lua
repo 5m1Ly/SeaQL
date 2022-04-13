@@ -44,3 +44,5 @@ Utils.split = function(heystack, needle)
 	result[#result+1] = string.sub(heystack, from)
 	return result
 end
+
+Utils.hash = sha256
