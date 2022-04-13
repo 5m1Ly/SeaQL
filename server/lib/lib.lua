@@ -6,6 +6,6 @@ SeaQL.__tostring = Utils.tostring
 
 SeaQL = setmetatable({
 
-	info = Info.set("0.0.1")
+	info = Info.set("0.0.3")
 
 }, SeaQL)

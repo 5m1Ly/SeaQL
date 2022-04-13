@@ -1,5 +1,11 @@
 Cache = {}
 
-Cache.__index = Cache
+function Cache.newStorage()
 
-Cache = setmetatable({}, Cache)
+	return setmetatable({ container = {} }, {
+		__index = Cache,
+		__tostring = Utils.tostring
+	})
+
+end
+
