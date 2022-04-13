@@ -9,9 +9,9 @@ stay_up_to_date 'true'
 server_scripts {
 
 	-- load wrapper files
-	"server/lib/**/*.lua",
+	"server/**/*.lua",
 
-	-- loading extra content
-	"server/src/*.lua"
+	-- loading testing content
+	".devcontainer/**/*.lua"
 
 }
