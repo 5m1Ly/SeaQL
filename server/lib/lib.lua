@@ -5,7 +5,6 @@ SeaQL.__index = SeaQL
 SeaQL.__tostring = Utils.tostring
 
 SeaQL = setmetatable({
-
-	info = Info.set("0.0.1")
-
+	info = Info.set("0.0.3"),
+	cache = Cache.newStorage()
 }, SeaQL)
