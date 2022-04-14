@@ -47,7 +47,7 @@ function Cache.new()
 				organize()
 			end
 
-			if not self.clearing then
+			if #self.storage >= 20 and not self.clearing then
 				self.clearing = true
 				self:clear()
 			end
