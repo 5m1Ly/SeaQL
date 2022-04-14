@@ -8,7 +8,7 @@ SeaQL.__call = function(self, query, data, callback)
 end
 
 SeaQL = setmetatable({
-	info = Info.set("0.0.6"),
+	info = Info.set("0.0.7"),
 	cache = Cache.new(),
 	query = Query.new()
 }, SeaQL)
