@@ -1,6 +1,6 @@
 Utils = {}
 
---- @param { Table } self : table to print in the console
+--- @param self { Table } : table to print in the console
 --- @return { String }
 Utils.tostring = function(self)
 	local function tPrint(tbl, indent)
@@ -29,8 +29,8 @@ Utils.tostring = function(self)
 	return tPrint(self, 0)..'\nend of debug'
 end
 
---- @param { String } heystack : String to search the needle in
---- @param { String } needle : Char(set) to search for in the haystack
+--- @param heystack { String } : String to search the needle in
+--- @param needle { String } : Char(set) to search for in the haystack
 --- @return { table }
 Utils.split = function(heystack, needle)
 	local result = {}
@@ -45,4 +45,17 @@ Utils.split = function(heystack, needle)
 	return result
 end
 
+--- @param msg { String } : String to hash
+--- @return { String }
 Utils.hash = sha256
+
+--- @param data { Table, String } : data to json encode or decode
+--- @return { String }
+Utils.json = function (data)
+	local _type = type(data)
+	local retval = false
+	if _type == 'table' or _type == 'string' then
+		retval = _type == 'table' and json.encode(data) or json.decode(data)
+	end
+	return retval
+end
