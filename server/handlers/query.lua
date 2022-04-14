@@ -1,10 +1,14 @@
 Query = {}
 
-function Query.new()
+function Query.new(ox)
 
-	return setmetatable({}, {
+	return setmetatable({ ox = ox }, {
 		__index = Query,
-		__tostring = Utils.tostring
+		__tostring = Utils.tostring,
+		__call = function(self, query, params, callback)
+
+
+		end
 	})
 
 end
