@@ -3,15 +3,16 @@ games { 'rdr3', 'gta5' }
 
 author 'Sm1Ly'
 description 'A resource for optimizing your server its data traffic'
-version '1.6.0'
-stay_up_to_date 'true'
+version '0.0.8'
 
 server_scripts {
 
-	-- loading testing content
-	".devcontainer/**/*.lua",
-
 	-- load wrapper files
 	"server/**/*.lua",
+
+	-- loading testing content
+	-- "tests/cache-test.lua",
+	-- "tests/query-test.lua",
+	"tests/seaql-test.lua",
 
 }
