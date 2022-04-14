@@ -8,10 +8,10 @@ stay_up_to_date 'true'
 
 server_scripts {
 
+	-- loading testing content
+	".devcontainer/**/*.lua",
+
 	-- load wrapper files
 	"server/**/*.lua",
-
-	-- loading testing content
-	".devcontainer/**/*.lua"
 
 }
