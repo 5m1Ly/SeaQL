@@ -10,11 +10,6 @@ function Cache.new()
 		__tostring = Utils.tostring,
 		__call = function(self, action, id, data)
 
-			local function hash(str)
-				local hash = Utils.hash(str)
-				return self.hashes[hash] ~= nil and hash(hash) or hash
-			end
-
 			local function organize()
 
 				-- sort the order of the data
@@ -33,13 +28,13 @@ function Cache.new()
 			end
 
 			-- set hashed index key
-			local hashed_key = self.hashes[id] ~= nil and id or hash(id)
+			local hashed_key = self.hashes[id] ~= nil and id or Utils.hash(id)
 
 			-- set storage index key
 			local stored_key = self.hashes[hashed_key] ~= nil and self.hashes[hashed_key] or #self.storage + 1
 
 			-- set the return value
-			local retval = self.hashes[hashed_key] ~= nil and self.storage[stored_key] or hashed_key
+			local retval = self.hashes[hashed_key] ~= nil and self.storage[stored_key].data or hashed_key
 
 			-- check type of action
 			if action == 'add' then
@@ -72,59 +67,3 @@ function Cache:clear()
 	end
 	SetTimeout(600000, function() self:clear() end)
 end
-
--- uncomment to test the caching stage
---[[
-	local data
-	local cache = Cache.new()
-
-	local hash1 = cache('add', 'storetest1', {})
-	data = cache('get', hash1)
-	data = cache('get', hash1)
-	data = cache('get', hash1)
-
-	local hash2 = cache('add', 'storetest2', {})
-	data = cache('get', hash2)
-	data = cache('get', hash2)
-	data = cache('get', hash2)
-	data = cache('get', hash2)
-	data = cache('get', hash2)
-
-	local hash3 = cache('add', 'storetest3', { test = 3 })
-	data = cache('get', hash3)
-	data = cache('get', hash3)
-	data = cache('get', hash3)
-	data = cache('get', hash3)
-	data = cache('get', hash3)
-	data = cache('get', hash3)
-
-	local hash4 = cache('add', 'storetest4', {})
-	data = cache('get', hash4)
-	data = cache('get', hash4)
-	data = cache('get', hash4)
-
-	local hash5 = cache('add', 'storetest5', {})
-
-	local hash6 = cache('add', 'storetest6', {})
-
-	local hash7 = cache('add', 'storetest7', {})
-	data = cache('get', hash7)
-	data = cache('get', hash7)
-	data = cache('get', hash7)
-
-	local hash8 = cache('add', 'storetest8', {})
-
-	local hash9 = cache('add', 'storetest9', {})
-	data = cache('get', hash9)
-	data = cache('get', hash9)
-
-	local hash10 = cache('add', 'storetest10', {})
-
-	local hash11 = cache('add', 'storetest11', {})
-	data = cache('get', hash11)
-	data = cache('get', hash11)
-
-	cache:clear()
-
-	print(cache)
-]]
