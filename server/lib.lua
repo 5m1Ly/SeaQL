@@ -9,5 +9,6 @@ end
 
 SeaQL = setmetatable({
 	info = Info.set("0.0.5"),
-	cache = Cache.new()
+	cache = Cache.new(),
+	query = Query.new()
 }, SeaQL)
